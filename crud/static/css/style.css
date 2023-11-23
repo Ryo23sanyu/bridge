@@ -1,0 +1,10 @@
+.table-cell {
+  white-space: normal;
+  background: orange;
+}
+
+.table-text {
+  width: 100px;
+  height: 100px;
+  background: orange;
+}

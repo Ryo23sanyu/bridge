@@ -12,7 +12,7 @@ class TopView(TemplateView):
      
 class ProductListView(LoginRequiredMixin, ListView):
      model = Product# データの一覧を表示
-     paginate_by = 5# ページネーション(10項目毎)
+     paginate_by = 100# ページネーション(10項目毎)
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
      model = Product
