@@ -18,12 +18,24 @@
          </thead>
          {% for product in object_list %}
          <tr>
-             <td>{{ product.name }}</td>
-             <td>{{ product.get_damage_name_label }} </td>
+            <td>{{ product.name }}</td>
+            <td>
+                {{ product.get_damage_name_label }}<br/>
+                {{ product.get_damage_name_label }}
+            </td>
              <td>{{ product.picture_number }} </td>
-             <td>{% if product.picture_comment == "" %} {{ "" }} {% else %} {{ product.picture_comment }} {% endif %}</td>
-             <td><img src="{{ product.img.url }}" style="width:100px height:auto;"></td>
-             <td>{% if product.findings == "" %} {{ "" }} {% else %} {{ product.findings }} {% endif %}</td>
+             <td>
+                <input type="text" name="input1" value="{{ product.picture_comment }}">
+            </td>
+             {% if product.img and product.img.url %}
+              <td><img src="{{ product.img.url }}" style="width:100px; height:auto;"></td>
+             {% else %}
+             <td></td>
+             {% endif %}
+             <td class="table-cell">
+                <form>
+                   <input type="text" name="input1" value="{{ product.findings }}">
+                </form>
              <td>
                 <button class="btn btn-primary" onclick="location.href='{% url 'edit' pk=product.pk %}'">編集</button>
                 <button class="btn btn-danger" onclick="location.href='{% url 'delete' pk=product.pk %}'">削除</button>
