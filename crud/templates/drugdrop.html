@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>ドラッグアンドドロップ</title>
+ 
+<style>
+#drop-area {
+    background-color: #999999;  border: solid 3px #666666;
+    color: #666666; width: 500px;   min-height: 250px;
+    padding: 20px;  text-align: center;
+}
+.input-file {
+    color: #000000;
+}
+#drop-area.dropover {
+    background-color: #cccccc;  color: #333333;
+}
+</style>
+ 
+</head>
+<body>
+<div id="drop-area" effectAllowed="move">
+<form enctype="multipart/form-data" action="upload.php" method="POST">
+      <p class="drag-drop-info">ここにファイルをドロップ</p>
+      <p>または</p>
+      <p class="input-file"><input id="fileInput" type="file" value="ファイルを選択" name="image"></p>
+      <p><input type="submit" value="ファイルをアップロードする"></p>
+</form>
+</div>
+ 
+<script>
+var elemDropArea = document.getElementById('drop-area');
+var fileInput = document.getElementById('fileInput');
+elemDropArea.addEventListener('dragover', function(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'copy';
+        showDropping();
+});
+elemDropArea.addEventListener('dragleave', function(event) {
+        hideDropping();
+});
+elemDropArea.addEventListener('drop', function(event) {
+        event.preventDefault();
+        hideDropping();
+        var files = event.dataTransfer.files;
+        fileInput.files = files;
+});
+function showDropping() {
+        elemDropArea.classList.add('dropover');
+}
+function hideDropping() {
+        elemDropArea.classList.remove('dropover');
+}
+</script>
+ 
+</body>
+</html>
