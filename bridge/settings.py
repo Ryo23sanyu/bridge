@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crud',
     'bootstrapform',
-    'album',
     'bootstrap4',      #追加
     'widget_tweaks',   #追加
     'pdfmr',
