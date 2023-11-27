@@ -33,3 +33,6 @@ class LoginView(LoginView):
  
 class LogoutView(LoginRequiredMixin, LogoutView):
      template_name = 'top.html'
+     
+def top(request):
+    return render(request, 'top.html') 

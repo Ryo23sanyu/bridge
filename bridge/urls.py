@@ -18,6 +18,7 @@ from django.urls import path
 from crud import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +29,8 @@ urlpatterns = [
     path('crud/delete/<int:pk>', views.ProductDeleteView.as_view(), name="delete"),
     path('login/', views.LoginView.as_view(), name="login"),
     path('logout/', views.LogoutView.as_view(), name="logout"),
+    path('pdfmr/', include('pdfmr.urls')),
+    path('', include('picture.urls')),
 ]
 
 if settings.DEBUG:
