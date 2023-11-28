@@ -34,11 +34,10 @@ urlpatterns = [
     # path('images/', views.images_view, name='images'),
     path('images/', name='images'),
     
-    # path('polls/', include('polls.urls')),
+    path('polls/', include('polls.urls')),
     path('album/', include('album.urls')),
-    path('admin/', admin.site.urls),
-    # path('accounts/login/', base.RedirectView.as_view(pattern_name="polls:login")),
-    # path('accounts/profile/', base.RedirectView.as_view(pattern_name="polls:index")),
+    path('accounts/login/', base.RedirectView.as_view(pattern_name="polls:login")),
+    path('accounts/profile/', base.RedirectView.as_view(pattern_name="polls:index")),
     
     path('', views.TopView.as_view(), name="top"),
 ] +  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
