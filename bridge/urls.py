@@ -22,7 +22,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.TopView.as_view(), name="top"),
+    
     path('crud/', views.ProductListView.as_view(), name="list"),
     path('crud/new/', views.ProductCreateView.as_view(), name="new"),
     path('crud/edit/<int:pk>', views.ProductUpdateView.as_view(), name="edit"),
@@ -30,7 +30,9 @@ urlpatterns = [
     path('login/', views.LoginView.as_view(), name="login"),
     path('logout/', views.LogoutView.as_view(), name="logout"),
     path('pdfmr/', include('pdfmr.urls')),
-    path('', include('picture.urls')),
+    path('images/', views.images_view, name='images'),
+    
+    path('', views.TopView.as_view(), name="top"),
 ]
 
 if settings.DEBUG:
